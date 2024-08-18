@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
-  props
-) => {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const styles = {
     checkbox:
       "rounded border-gray-300 text-gray-700 bg-white dark:bg-gray-500 shadow-sm",
@@ -11,16 +11,18 @@ const Input: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (
   };
 
   const { className, type = "text", ...rest } = props;
-
   const styleClass = type === "checkbox" ? styles.checkbox : styles.default;
 
   return (
     <input
       {...rest}
+      ref={ref}
       type={type}
       className={`${styleClass} ${className || ""}`}
     />
   );
-};
+});
+
+Input.displayName = "Input";
 
 export default Input;
