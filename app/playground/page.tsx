@@ -9,6 +9,11 @@ import Input from "@/components/Input";
 import Select from "@/components/Select";
 import Separator from "@/components/Separator";
 import Skeleton from "@/components/Skeleton";
+import { title } from "process";
+
+export const metadata = {
+  title: "Playground",
+};
 
 const Page: React.FC = () => {
   return (
